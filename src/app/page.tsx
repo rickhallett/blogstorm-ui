@@ -15,7 +15,7 @@ export default function HomePage() {
     {
       icon: <CalendarDays className="w-6 h-6" />,
       title: "Smart Scheduling",
-      description: "Plan your content calendar with flexible scheduling options - immediate, scheduled, or recurring",
+      description: "Plan your content calendar with flexible scheduling options - immediate, scheduled, or automatic",
       badge: "Calendar view"
     },
     {
@@ -82,7 +82,7 @@ export default function HomePage() {
             <CardDescription>Current processing queue and system metrics</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <div className="text-sm text-gray-500 dark:text-gray-400">Active Jobs</div>
                 <div className="text-2xl font-bold">3</div>
@@ -92,12 +92,8 @@ export default function HomePage() {
                 <div className="text-2xl font-bold">7</div>
               </div>
               <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="text-sm text-gray-500 dark:text-gray-400">Est. Wait Time</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">Total Publications</div>
                 <div className="text-2xl font-bold">5min</div>
-              </div>
-              <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="text-sm text-gray-500 dark:text-gray-400">Next Slot</div>
-                <div className="text-2xl font-bold">12:30</div>
               </div>
             </div>
           </CardContent>
