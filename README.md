@@ -122,8 +122,8 @@ interface ScheduleUpdate {
 
 Run tests:
 ```bash
-npm test              # Run test suite
-npm run test:watch    # Watch mode
+npm test              
+npm 
 ```
 
 Run linting:
