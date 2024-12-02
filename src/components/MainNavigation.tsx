@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import { useAuth } from "@/lib/auth/provider";
 interface NavigationItem {
   title: string;
   href: string;
@@ -66,12 +67,7 @@ export function MainNavigation() {
   const pathname = usePathname();
   const [isMobileOpen, setIsMobileOpen] = React.useState(false);
 
-  // Mock user data - replace with auth context
-  const user = {
-    name: "Alex Chen",
-    email: "alex@example.com",
-    avatarUrl: "/avatar.png"
-  };
+  const { user } = useAuth();
 
   return (
     <>
@@ -80,7 +76,8 @@ export function MainNavigation() {
         <div className="flex items-center gap-6 flex-1">
           {/* Brand */}
           <div className="flex-shrink-0">
-            <Link href="/dashboard" className="flex items-center gap-2">
+            {" "}
+            <Link href="/" className="flex items-center gap-2">
               <span className="text-xl font-bold">BlogStorm</span>
             </Link>
           </div>
@@ -98,7 +95,9 @@ export function MainNavigation() {
                   className={cn(
                     "flex items-center gap-2 px-3 py-2 rounded-md text-sm transition-colors",
                     "hover:bg-accent hover:text-accent-foreground",
-                    isActive ? "bg-accent text-accent-foreground" : "text-muted-foreground"
+                    isActive
+                      ? "bg-accent text-accent-foreground"
+                      : "text-muted-foreground"
                   )}
                 >
                   <ItemIcon className="w-4 h-4" />
@@ -146,12 +145,14 @@ export function MainNavigation() {
           <SheetHeader className="p-6 border-b">
             <div className="flex items-center gap-4">
               <Avatar className="h-10 w-10">
-                <AvatarImage src={user.avatarUrl} alt={user.name} />
-                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                <AvatarImage src={user?.avatarUrl} alt={user?.name} />
+                <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
               </Avatar>
               <div className="flex-1">
-                <SheetTitle className="text-base font-medium">{user.name}</SheetTitle>
-                <p className="text-sm text-muted-foreground">{user.email}</p>
+                <SheetTitle className="text-base font-medium">
+                  {user?.name}
+                </SheetTitle>
+                <p className="text-sm text-muted-foreground">{user?.email}</p>
               </div>
             </div>
           </SheetHeader>
@@ -170,7 +171,9 @@ export function MainNavigation() {
                     className={cn(
                       "flex items-center justify-between px-4 py-3 rounded-md text-sm transition-colors",
                       "hover:bg-accent hover:text-accent-foreground",
-                      isActive ? "bg-accent text-accent-foreground" : "text-muted-foreground"
+                      isActive
+                        ? "bg-accent text-accent-foreground"
+                        : "text-muted-foreground"
                     )}
                   >
                     <span className="flex items-center gap-3">
@@ -205,7 +208,9 @@ export function MainNavigation() {
             <Button
               variant="ghost"
               className="w-full justify-start gap-3 text-red-600 hover:text-red-600 hover:bg-red-50"
-              onClick={() => {/* Implement logout */ }}
+              onClick={() => {
+                /* Implement logout */
+              }}
             >
               <LogOut className="w-4 h-4" />
               Sign Out
